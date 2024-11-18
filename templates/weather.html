@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Väderrapport</title>
+    <style>
+        table {
+            width: 100%;
+            border-spacing: 0;
+            margin-top: 20px;
+            background-color: #fafafa;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+        th {
+            background-color: #e0e0e0;
+            font-weight: bold;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Väderrapport</h1>
+    </header>
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th>Datum</th>
+                    <th>Klockslag</th>
+                    <th>Temperatur (°C)</th>
+                    <th>Regn (Ja/Nej)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if weather_data %}
+                    {% for entry in weather_data %}
+                        <tr>
+                            <td>{{ entry['Datum'] }}</td>
+                            <td>{{ entry['Timme'] }}</td>
+                            <td>{{ entry['Temperatur (°C)'] }}</td>
+                            <td>{{ entry['Regn (True/False)'] }}</td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="4">Ingen väderinformation tillgänglig.</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>
