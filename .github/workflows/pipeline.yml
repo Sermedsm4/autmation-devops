@@ -90,13 +90,13 @@ jobs:
       # Steg 4: Bygg Docker bild
       - name: Build Docker image
         run: |
-          IMAGE_TAG="sermed-data-pipeline:${GITHUB_SHA}"
+          IMAGE_TAG="maholam/sermed-data-pipeline:${GITHUB_SHA}"
           docker build -t $IMAGE_TAG .
           echo "Docker image built: $IMAGE_TAG"
 
       # Steg 5: Ladda upp Docker bild till DockerHub
       - name: Push Docker image
         run: |
-          IMAGE_TAG="sermed-data-pipeline:${GITHUB_SHA}"
+          IMAGE_TAG="maholam/sermed-data-pipeline:${GITHUB_SHA}"
           docker push $IMAGE_TAG
           echo "Docker image pushed: $IMAGE_TAG"
